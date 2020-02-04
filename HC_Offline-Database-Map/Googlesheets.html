@@ -16,7 +16,7 @@
     function makeApiCall() {
       var params = {
         // The ID of the spreadsheet to retrieve data from.
-        spreadsheetId: 'my-spreadsheet-id',  // TODO: Update placeholder value.
+        spreadsheetId: '1SZ-2XY-BPP_58qj0PRynawg6pDBGp9CDD0NhFWuOZUc',  // TODO: Update placeholder value.
 
         // The A1 notation of the values to retrieve.
         range: 'my-range',  // TODO: Update placeholder value.
@@ -68,26 +68,12 @@
     function handleClientLoad() {
       gapi.load('client:auth2', initClient);
     }
-
-    function updateSignInStatus(isSignedIn) {
-      if (isSignedIn) {
         makeApiCall();
-      }
-    }
 
-    function handleSignInClick(event) {
-      gapi.auth2.getAuthInstance().signIn();
-    }
-
-    function handleSignOutClick(event) {
-      gapi.auth2.getAuthInstance().signOut();
-    }
     </script>
     <script async defer src="https://apis.google.com/js/api.js"
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>
-    <button id="signin-button" onclick="handleSignInClick()">Sign in</button>
-    <button id="signout-button" onclick="handleSignOutClick()">Sign out</button>
   </body>
 </html>
