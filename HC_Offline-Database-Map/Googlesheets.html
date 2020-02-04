@@ -78,9 +78,7 @@
        *  Sign in the user upon button click.
        */
       function handleAuthClick(event) {
-      gapi.auth2.getAuthInstance().signIn({
-          scope: 'offline-data-base@hc-offline-database.iam.gserviceaccount.com'
-        });
+      gapi.auth2.getAuthInstance().signIn();
       }
 
       /**
