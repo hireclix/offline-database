@@ -144,6 +144,17 @@
           center: {lat: 39.828, lng: -98.579}
         });
         var geocoder = new google.maps.Geocoder();
+        for (i = 0; i <address.length; i++){
+        geocoder.geocode({'address': address[0]}, function(results, status) {
+          if (status === 'OK') {
+             var marker = new google.maps.Marker({
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+        }
 
         var contentString = '<div id="content">'+
             '<div id="siteNotice">'+
