@@ -109,11 +109,6 @@
        *
        * @param {string} message Text to be placed in pre element.
        */
-      function appendPre(message) {
-        var pre = document.getElementById('content');
-        var textContent = document.createTextNode(message + '\n');
-        pre.appendChild(textContent);
-      }
 
       /**
        * Print the names and majors of students in a sample spreadsheet:
@@ -126,19 +121,15 @@
         }).then(function(response) {
           var range = response.result;
           if (range.values.length > 0) {
-            appendPre('City, State:');
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
               // Print columns A and E, which correspond to indices 0 and 4.
-              appendPre(row[0] + ', ' + row[1]);
             }
-          } else {
-            appendPre('No data found.');
           }
         }, function(response) {
           
           
-          Pre('Error: ' + response.result.error.message);
+          console.log('Error: ' + response.result.error.message);
         });
       }
       
