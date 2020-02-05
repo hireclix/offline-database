@@ -118,8 +118,8 @@
 
       function listMajors() {
         gapi.client.sheets.spreadsheets.values.get({
-          spreadsheetId: '1mC-xFA5AXjIpuuNrtxyejzdGpmt-9QqsGX_Qjp1zhOY',
-          range: 'Offline Directory!A2:B',
+          spreadsheetId: '1SZ-2XY-BPP_58qj0PRynawg6pDBGp9CDD0NhFWuOZUc',
+          range: 'B!A2:B',
         }).then(function(response) {
           var range = response.result;
           if (range.values.length > 0) {
@@ -152,6 +152,7 @@
               position: results[0].geometry.location
             });
           } else {
+            console.log("geocode failed");
             //alert('Geocode was not successful for the following reason: ' + status);
           }
         });
