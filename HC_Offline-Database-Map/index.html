@@ -114,7 +114,8 @@
        * Print the names and majors of students in a sample spreadsheet:
        * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
        */
-      
+      var address = "";
+
       function listMajors() {
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1mC-xFA5AXjIpuuNrtxyejzdGpmt-9QqsGX_Qjp1zhOY',
@@ -124,13 +125,7 @@
           if (range.values.length > 0) {
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
-              var address = row[0]+","+row[1];
-              geocoder.geocode({'address': address}, function(results, status) {
-                if (status === 'OK') {
-                var marker = new google.maps.Marker({
-                map: resultsMap,
-                position: results[0].geometry.location
-              });
+              address = row[0]+","+row[1];
               // Print columns A and E, which correspond to indices 0 and 4.
             }
           }
