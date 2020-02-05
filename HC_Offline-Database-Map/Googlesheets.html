@@ -116,7 +116,7 @@
           range: 'Offline Directory!A2:B',
         }).then(function(response) {
           var range = response.result;
-          initMap()
+          initMap();
           if (range.values.length > 0) {
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i]; 
