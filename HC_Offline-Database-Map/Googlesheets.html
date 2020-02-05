@@ -11,8 +11,8 @@
     <button id="authorize_button" style="display: none;">Authorize</button>
     <button id="signout_button" style="display: none;">Sign Out</button>
 
-    <pre id="content" style="white-space: pre-wrap;"></pre>
-
+    <div id="map"></div>
+    
     <script type="text/javascript">
       // Client ID and API key from the Developer Console
       var CLIENT_ID = '444531464441-qk95q8l02r0025g4v4jri6hsaa322o9r.apps.googleusercontent.com';
@@ -104,22 +104,24 @@
        * Print the names and majors of students in a sample spreadsheet:
        * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
        */
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 6,
+        center: {lat: -39.828, lng: -98.579}
+       });
+        
       function listMajors() {
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1mC-xFA5AXjIpuuNrtxyejzdGpmt-9QqsGX_Qjp1zhOY',
           range: 'Offline Directory!A2:B',
         }).then(function(response) {
           var range = response.result;
+          initMap()
           if (range.values.length > 0) {
-            appendPre('City, State:');
             for (i = 0; i < range.values.length; i++) {
-              var row = range.values[i];
-              // Print columns A and E, which correspond to indices 0 and 4.
-              appendPre(row[0] + ', ' + row[1]);
+              var row = range.values[i]; 
             }
-          } else {
-            appendPre('No data found.');
-          }
+          } 
         }, function(response) {
           
           
