@@ -127,27 +127,31 @@
         }).then(function(response) {
           var range = response.result;
           if (range.values.length > 0) {
-            appendPre('City, State:');
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
-              // Print columns A and E, which correspond to indices 0 and 4.
-              appendPre(row[0] + ', ' + row[1]);
             }
           } else {
-            appendPre('No data found.');
           }
-        }, function(response) {
-          
-          
-          Pre('Error: ' + response.result.error.message);
+        }, function(response) {   
+          console.log('Error: ' + response.result.error.message);
         });
       }
+      
+      function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
 
     </script>
 
     <script async defer src="https://apis.google.com/js/api.js"
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwJ9sCvEvq_SVcH_9fpKHdqacenx6Ckx8&callback=initMap">
     </script>
   </body>
 </html>
