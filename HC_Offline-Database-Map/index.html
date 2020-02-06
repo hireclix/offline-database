@@ -117,7 +117,7 @@
       var geocoder = new google.maps.Geocoder();
       var address = [];
       
-      function AddressToLL(arr){
+      function AddressToLL(arr) {
        for (i = 0; i <arr.length; i++){
        geocoder.geocode({'address': arr[i]}, function(results, status) {
           if (status === 'OK') {
