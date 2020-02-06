@@ -82,6 +82,7 @@
         if (isSignedIn) {
           authorizeButton.style.display = 'none';
           signoutButton.style.display = 'block';
+          listMajors();
         } else {
           authorizeButton.style.display = 'block';
           signoutButton.style.display = 'none';
@@ -112,7 +113,7 @@
        * Print the names and majors of students in a sample spreadsheet:
        * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
        */
-      
+      var map;
       var address = [];
       
        function listMajors() {
@@ -128,16 +129,8 @@
               // Print columns A and E, which correspond to indices 0 and 4.
             }
           }
-        }, function(response) {
-          console.log('Error: ' + response.result.error.message);
-        });
-      }
-      
-      // MAP
-      
-       function addressToLL(arr,map) {
-         for (i = 0; i <arr.length; i++){
-         geocoder.geocode({'address': arr[i]}, function(results, status) {
+         for (i = 0; i <address.length; i++){
+         geocoder.geocode({'address': address[i]}, function(results, status) {
           if (status === 'OK') {
              var marker = new google.maps.Marker({
               map: map,
@@ -149,18 +142,21 @@
           }
         });
         }
+        }, function(response) {
+          console.log('Error: ' + response.result.error.message);
+        });
       }
       
+      // MAP
+      
       function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('map'), {
           zoom: 4,
           center: {lat: 39.828, lng: -98.579}
         });
         
         var geocoder = new google.maps.Geocoder();
         
-        listMajors();
-        addresstoLL(address,map)
         
         var contentString = '<div id="content">'+
             '<div id="siteNotice">'+
@@ -203,13 +199,12 @@
       
       
     </script>
-    
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwJ9sCvEvq_SVcH_9fpKHdqacenx6Ckx8&callback=initMap">
+    </script>
      <script async defer src="https://apis.google.com/js/api.js"
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwJ9sCvEvq_SVcH_9fpKHdqacenx6Ckx8&callback=initMap">
     </script>
     
   </body>
