@@ -145,7 +145,12 @@
         
         var geocoder = new google.maps.Geocoder();
         console.log(address);
-        
+        console.log(address.values);
+        console.log(address[2]);
+        var iterator = address.values();
+        for (const value of iterator) {
+           console.log(value);
+         }
         //for (i = 0; i <address.length; i++){
          geocoder.geocode({'address': address[0]}, function(results, status) {
            console.log(results);
