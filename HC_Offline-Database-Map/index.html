@@ -145,11 +145,12 @@
         });
         
         var geocoder = new google.maps.Geocoder();
-        
-        console.log(address)
+        var Geoadress = address;
+        console.log(address);
+        console.log(Geoaddress);
         
         //for (i = 0; i <address.length; i++){
-         geocoder.geocode({'address': address[0]}, function(results, status) {
+         geocoder.geocode({'address': Geoadress[0]}, function(results, status) {
            console.log(results);
            console.log(status);
           if (status === 'OK') {
@@ -209,7 +210,7 @@
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>
-    <script defer
+    <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwJ9sCvEvq_SVcH_9fpKHdqacenx6Ckx8&callback=initMap">
     </script>
     
