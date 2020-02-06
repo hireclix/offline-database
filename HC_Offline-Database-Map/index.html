@@ -48,6 +48,7 @@
        */
       function handleClientLoad() {
         gapi.load('client:auth2', initClient);
+        var address=[];
       }
 
       /**
@@ -114,7 +115,7 @@
        * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
        */
       var map;
-      var address;
+      
       
        function listMajors() {
         gapi.client.sheets.spreadsheets.values.get({
