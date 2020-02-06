@@ -129,19 +129,6 @@
               // Print columns A and E, which correspond to indices 0 and 4.
             }
           }
-         for (i = 0; i <address.length; i++){
-         geocoder.geocode({'address': address[i]}, function(results, status) {
-          if (status === 'OK') {
-             var marker = new google.maps.Marker({
-              map: map,
-              position: results[0].geometry.location
-            });
-          } else {
-            console.log("geocode failed");
-            //alert('Geocode was not successful for the following reason: ' + status);
-          }
-        });
-        }
         }, function(response) {
           console.log('Error: ' + response.result.error.message);
         });
@@ -156,7 +143,20 @@
         });
         
         var geocoder = new google.maps.Geocoder();
-        
+        console.log(address)
+        /*for (i = 0; i <address.length; i++){
+         geocoder.geocode({'address': address[i]}, function(results, status) {
+          if (status === 'OK') {
+             var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+            });
+          } else {
+            console.log("geocode failed");
+            //alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+        }*/
         
         var contentString = '<div id="content">'+
             '<div id="siteNotice">'+
@@ -199,12 +199,12 @@
       
       
     </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwJ9sCvEvq_SVcH_9fpKHdqacenx6Ckx8&callback=initMap">
-    </script>
-     <script async defer src="https://apis.google.com/js/api.js"
+    <script async defer src="https://apis.google.com/js/api.js"
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwJ9sCvEvq_SVcH_9fpKHdqacenx6Ckx8&callback=initMap">
     </script>
     
   </body>
