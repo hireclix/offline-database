@@ -113,12 +113,22 @@
        * Print the names and majors of students in a sample spreadsheet:
        * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
        */
-      var geocoder = new google.maps.Geocoder();
+      
       var address = [];
       
-      function AddressToLL(arr) {
-       for (i = 0; i <arr.length; i++){
-       geocoder.geocode({'address': arr[i]}, function(results, status) {
+      
+      // MAP
+
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: {lat: 39.828, lng: -98.579}
+        });
+        var geocoder = new google.maps.Geocoder();
+        
+       function AddressToLL(arr) {
+         for (i = 0; i <arr.length; i++){
+         geocoder.geocode({'address': arr[i]}, function(results, status) {
           if (status === 'OK') {
              var marker = new google.maps.Marker({
               map: map,
@@ -131,7 +141,7 @@
         });
         }
       }
-
+        
       function listMajors() {
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1SZ-2XY-BPP_58qj0PRynawg6pDBGp9CDD0NhFWuOZUc',
@@ -150,18 +160,7 @@
           console.log('Error: ' + response.result.error.message);
         });
       }
-      
-      
-      // MAP
-
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: {lat: 39.828, lng: -98.579}
-        });
         
-        
-
         var contentString = '<div id="content">'+
             '<div id="siteNotice">'+
             '</div>'+
