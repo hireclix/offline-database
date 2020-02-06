@@ -83,6 +83,7 @@
           authorizeButton.style.display = 'none';
           signoutButton.style.display = 'block';
           listMajors();
+          console.log(address);
         } else {
           authorizeButton.style.display = 'block';
           signoutButton.style.display = 'none';
@@ -126,6 +127,7 @@
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
               address.push(row[0]+","+row[1]);
+              console.log(row);
               // Print columns A and E, which correspond to indices 0 and 4.
             }
           }
@@ -133,7 +135,6 @@
           console.log('Error: ' + response.result.error.message);
         });
       }
-      
       
       
       // MAP
@@ -146,9 +147,8 @@
         
         var geocoder = new google.maps.Geocoder();
         
-        for (i = 0; i <address.length; i++){
-          console.log(address[i]);
-        /*geocoder.geocode({'address': address[i]}, function(results, status) {
+        /* for (i = 0; i <address.length; i++){
+       geocoder.geocode({'address': address[i]}, function(results, status) {
           if (status === 'OK') {
              var marker = new google.maps.Marker({
               map: map,
@@ -158,8 +158,8 @@
             console.log("geocode failed");
             //alert('Geocode was not successful for the following reason: ' + status);
           }
-        });*/
-        }
+        });
+        }*/
 
         var contentString = '<div id="content">'+
             '<div id="siteNotice">'+
