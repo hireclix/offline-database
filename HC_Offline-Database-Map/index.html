@@ -48,7 +48,6 @@
        */
       function handleClientLoad() {
         gapi.load('client:auth2', initClient);
-        var address=[];
       }
 
       /**
@@ -115,7 +114,8 @@
        * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
        */
       var map;
-      
+      var address=[];
+
       
        function listMajors() {
         gapi.client.sheets.spreadsheets.values.get({
@@ -209,7 +209,7 @@
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>
-    <script async defer
+    <script defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwJ9sCvEvq_SVcH_9fpKHdqacenx6Ckx8&callback=initMap">
     </script>
     
