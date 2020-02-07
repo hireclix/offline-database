@@ -93,11 +93,13 @@
               position: results[0].geometry.location,
               title: address[i]
             });
-            var infowindow = new google.maps.InfoWindow();
-            var content = "Location: " + address[i];  
+            var content = "Location: " + address[i]; 
+            console.log(content);
+            var infowindow = new google.maps.InfoWindow({
+              content: content
+             }); 
             google.maps.event.addListener(marker, "click", (function(marker) {
               return function(evt) {
-                infowindow.setContent(content);
                 infowindow.open(map, marker);
                 }
           })(marker));
