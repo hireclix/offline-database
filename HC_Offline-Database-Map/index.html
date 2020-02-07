@@ -82,10 +82,9 @@
         });
         
         var geocoder = new google.maps.Geocoder();
-        console.log(address);
         
-        //for (i = 0; i <address.length; i++){
-         geocoder.geocode({'address': address[0]}, function(results, status) {
+        for (i = 0; i <address.length; i++){
+         geocoder.geocode({'address': address[i]}, function(results, status) {
            console.log(results);
            console.log(status);
           if (status === 'OK') {
@@ -98,7 +97,7 @@
             //alert('Geocode was not successful for the following reason: ' + status);
           }
         });
-        //}
+        }
         
         var contentString = '<div id="content">'+
             '<div id="siteNotice">'+
