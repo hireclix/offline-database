@@ -84,9 +84,9 @@
         var geocoder = new google.maps.Geocoder();
         var marker;
         
+        setTimeout(function(){
         for (i = 0; i <address.length; i++){
          geocoder.geocode({'address': address[i]}, function(results, status) {
-           setTimeout(function(){}, 1000);
            console.log(results);
            console.log(status);           
           if (status === 'OK') {
@@ -95,12 +95,18 @@
               position: results[0].geometry.location,
               title: address[i];
             });
+            var infowindow = new google.maps.InfoWindow({
+              content: address[i];
+             });
+            marker.addListener('click', function() {
+             infowindow.open(map, marker);
+            });
           } else {
             console.log("geocode failed");
             //alert('Geocode was not successful for the following reason: ' + status);
           }
         });
-        }
+        }}, 1000);
         var contentString = '<div id="content">'+
             '<div id="siteNotice">'+
             '</div>'+
@@ -122,18 +128,15 @@
             '</div>'+
             '</div>';
 
-        var infowindow = new google.maps.InfoWindow({
-          content: contentString
-        });
 
        // var marker = new google.maps.Marker({
          // position: {lat: 39.828, lng: -98.579},
          // map: map,
          // title: 'Uluru (Ayers Rock)'
         //});
-        //marker.addListener('click', function() {
-         // infowindow.open(map, marker);
-        //});
+       marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
       }
 
       /**
