@@ -84,6 +84,11 @@
         
         var geocoder = new google.maps.Geocoder();
         for (i = 0; i <address.length; i++){
+          var content = "hello";
+          var infowindow = new google.maps.InfoWindow({
+              content: content
+           }); 
+          window.setTimeout(function() {
           geocoder.geocode({'address': address[i]}, function(results, status) {          
           if (status === 'OK') {
             var marker = new google.maps.Marker({
@@ -91,12 +96,6 @@
               position: results[0].geometry.location,
               title: address[i]
             });
-            console.log(address[i]);
-            console.log(address);
-            var content = "hello";
-            var infowindow = new google.maps.InfoWindow({
-              content: content
-            }); 
             google.maps.event.addListener(marker, "click", (function(marker) {
               return function(evt) {
                 infowindow.open(map, marker);
@@ -108,6 +107,7 @@
           }
         });
         }
+        },1000);
       }
       /**
        *  Called when the signed in status changes, to update the UI
