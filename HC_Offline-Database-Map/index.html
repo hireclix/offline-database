@@ -74,7 +74,30 @@
           console.log("error with init sheets client");
         });
       }
-       var map;
+      var map;
+       function geo(loc, M){
+         geocoder.geocode({'address': loc}, function(results, status) {          
+          if (status === 'OK') {
+            var marker = new google.maps.Marker({
+              map: M,
+              position: results[0].geometry.location,
+              title: loc
+            });
+           var content = "hello"+loc;
+           var infowindow = new google.maps.InfoWindow({
+              content: content
+              }); 
+            google.maps.event.addListener(marker, "click", (function(marker) {
+              return function(evt) {
+                infowindow.open(M, marker);
+                }
+          })(marker));
+          } else {
+            console.log("geocode failed");
+            //alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+       }
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 4,
@@ -82,28 +105,9 @@
         });
         
         var geocoder = new google.maps.Geocoder();
-        var marker;
+        
         for (i = 0; i <address.length; i++){
-         geocoder.geocode({'address': address[i]}, function(results, status) {          
-          if (status === 'OK') {
-            marker = new google.maps.Marker({
-              map: map,
-              position: results[0].geometry.location,
-            });
-          } else {
-            console.log("geocode failed");
-            //alert('Geocode was not successful for the following reason: ' + status);
-          }
-        });
-          var content = "hello"+ address[i];
-          var infowindow = new google.maps.InfoWindow({
-              content: content
-             }); 
-            google.maps.event.addListener(marker, "click", (function(marker) {
-              return function(evt) {
-                infowindow.open(map, marker);
-                }
-          })(marker));
+          geo(address[i],map);
         }
       }
       /**
