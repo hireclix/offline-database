@@ -93,13 +93,15 @@
               position: results[0].geometry.location,
               title: address[i]
             });
-            var content = "Location: " + address[i];
             var infowindow = new google.maps.InfoWindow();
 
-            google.maps.event.AddListener(marker, 'click', function (map, marker) {
-              infowindow.setContent(content)
-              infowindow.open(map, marker)
-              });
+            google.maps.event.addListener(marker, "click", (function(marker) {
+              return function(evt) {
+                var content = "Location: " + marker.getTitle();
+                infowindow.setContent(content);
+                infowindow.open(map, marker);
+                }
+          })(marker));
           } else {
             console.log("geocode failed");
             //alert('Geocode was not successful for the following reason: ' + status);
