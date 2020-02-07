@@ -94,7 +94,7 @@
               title: address[i]
             });
             var content = "Location: " + address[i];
-            var infowindow = new google.maps.InfoWindow()
+            var infowindow = new google.maps.InfoWindow();
 
             google.maps.AddListener(marker, 'click', function (map, marker) {
               infowindow.setContent(content)
