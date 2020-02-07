@@ -93,10 +93,10 @@
             marker = new google.maps.Marker({
               map: map,
               position: results[0].geometry.location,
-              title: address[i];
+              title: address[i]
             });
             var infowindow = new google.maps.InfoWindow({
-              content: address[i];
+              content: address[i]
              });
             marker.addListener('click', function() {
              infowindow.open(map, marker);
