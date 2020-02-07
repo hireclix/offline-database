@@ -84,10 +84,6 @@
         
         var geocoder = new google.maps.Geocoder();
         for (i = 0; i <address.length; i++){
-          var content = "hello"+address[i];
-          var infowindow = new google.maps.InfoWindow({
-              content: content
-           }); 
           geocoder.geocode({'address': address[i]}, function(results, status) {          
           if (status === 'OK') {
             var marker = new google.maps.Marker({
@@ -95,6 +91,12 @@
               position: results[0].geometry.location,
               title: address[i]
             });
+            console.log(address[i]);
+            console.log(address);
+            var content = "hello";
+            var infowindow = new google.maps.InfoWindow({
+              content: content
+            }); 
             google.maps.event.addListener(marker, "click", (function(marker) {
               return function(evt) {
                 infowindow.open(map, marker);
@@ -158,8 +160,6 @@
               address.push(range.values[i].join(","));
               // Print columns A and E, which correspond to indices 0 and 4.
             }
-            console.log(address[0]);
-            console.log(address);
             initMap();
 
           }
