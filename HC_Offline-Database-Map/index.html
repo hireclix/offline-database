@@ -82,13 +82,14 @@
         });
         
         var geocoder = new google.maps.Geocoder();
+        var marker;
         
         for (i = 0; i <address.length; i++){
          geocoder.geocode({'address': address[i]}, function(results, status) {
            console.log(results);
            console.log(status);
           if (status === 'OK') {
-            var marker = new google.maps.Marker({
+            marker = new google.maps.Marker({
               map: map,
               position: results[0].geometry.location
             });
@@ -98,7 +99,7 @@
           }
         });
         }
-        
+        console.log(marker);
         var contentString = '<div id="content">'+
             '<div id="siteNotice">'+
             '</div>'+
