@@ -96,7 +96,7 @@
             var content = "Location: " + address[i];
             var infowindow = new google.maps.InfoWindow();
 
-            google.maps.AddListener(marker, 'click', function (map, marker) {
+            google.maps.event.AddListener(marker, 'click', function (map, marker) {
               infowindow.setContent(content)
               infowindow.open(map, marker)
               });
