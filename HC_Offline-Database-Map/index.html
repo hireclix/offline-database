@@ -84,18 +84,19 @@
         var geocoder = new google.maps.Geocoder();
         
         for (i = 0; i <address.length; i++){
-         var content = "Location: " + address[i];
-         console.log(content);
-         geocoder.geocode({'address': address[i]}, function(results, status) {
-           console.log(results);
-           console.log(status);           
+         geocoder.geocode({'address': address[i]}, function(results, status) {          
           if (status === 'OK') {
             var marker = new google.maps.Marker({
               map: map,
               position: results[0].geometry.location,
-              title: address[i]
             });
-            var infowindow = new google.maps.InfoWindow({
+          } else {
+            console.log("geocode failed");
+            //alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+          var content = "hello"+ address[i];
+          var infowindow = new google.maps.InfoWindow({
               content: content
              }); 
             google.maps.event.addListener(marker, "click", (function(marker) {
@@ -103,11 +104,6 @@
                 infowindow.open(map, marker);
                 }
           })(marker));
-          } else {
-            console.log("geocode failed");
-            //alert('Geocode was not successful for the following reason: ' + status);
-          }
-        });
         }
       }
       /**
