@@ -82,11 +82,11 @@
         });
         
         var geocoder = new google.maps.Geocoder();
-        
+        var marker;
         for (i = 0; i <address.length; i++){
          geocoder.geocode({'address': address[i]}, function(results, status) {          
           if (status === 'OK') {
-            var marker = new google.maps.Marker({
+            marker = new google.maps.Marker({
               map: map,
               position: results[0].geometry.location,
             });
