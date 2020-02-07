@@ -115,14 +115,13 @@
        */
       var map;
       var address=[];
-      var range;
       
        function listMajors() {
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1SZ-2XY-BPP_58qj0PRynawg6pDBGp9CDD0NhFWuOZUc',
           range: 'B!A2:B',
         }).then(function(response) {
-          range = response.result;
+          var range = response.result;
           if (range.values.length > 0) {
             for (i = 0; i < range.values.length; i++) {
               address.push(range.values[i]);
@@ -143,16 +142,12 @@
         });
         
         var geocoder = new google.maps.Geocoder();
-
         console.log(address);
-        console.log(range);
-         if (address.length > 0) {
-            for (i = 0; i < address.length; i++) {
-              var row = address.values[i];
-              console.log(row[0]);
-              console.log(row);
-            }
-          }
+        console.log(address[2]);
+        console.log(address[2][2]);
+        console.log(address.values[2]);
+        console.log(address.length);
+        console.log(address.values.length);
          
         //for (i = 0; i <address.length; i++){
          geocoder.geocode({'address': address[0]}, function(results, status) {
