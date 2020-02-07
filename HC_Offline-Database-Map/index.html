@@ -97,7 +97,7 @@
 
             google.maps.event.addListener(marker, "click", (function(marker) {
               return function(evt) {
-                var content = "Location: " + marker.getTitle();
+                var content = "Location: " + address[i];
                 infowindow.setContent(content);
                 infowindow.open(map, marker);
                 }
