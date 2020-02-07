@@ -83,6 +83,7 @@
           authorizeButton.style.display = 'none';
           signoutButton.style.display = 'block';
           listMajors();
+          initmap();
         } else {
           authorizeButton.style.display = 'block';
           signoutButton.style.display = 'none';
@@ -198,12 +199,12 @@
       }
       
     </script>
-    <script src="https://apis.google.com/js/api.js"
+    <script aysnc defer src="https://apis.google.com/js/api.js"
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>
     <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwJ9sCvEvq_SVcH_9fpKHdqacenx6Ckx8&callback=initMap">
+    async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwJ9sCvEvq_SVcH_9fpKHdqacenx6Ckx8">
     </script>
     
   </body>
