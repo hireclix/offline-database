@@ -88,6 +88,8 @@
          geocoder.geocode({'address': address[i]}, function(results, status) {
            console.log(results);
            console.log(status);
+           time.sleep(2);
+           
           if (status === 'OK') {
             marker = new google.maps.Marker({
               map: map,
