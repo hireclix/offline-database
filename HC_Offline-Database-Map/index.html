@@ -92,7 +92,8 @@
           if (status === 'OK') {
             marker = new google.maps.Marker({
               map: map,
-              position: results[0].geometry.location
+              position: results[0].geometry.location,
+              title: address[i];
             });
           } else {
             console.log("geocode failed");
