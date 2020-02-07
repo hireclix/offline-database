@@ -86,10 +86,9 @@
         
         for (i = 0; i <address.length; i++){
          geocoder.geocode({'address': address[i]}, function(results, status) {
+           setTimeout(function(){}, 1000);
            console.log(results);
-           console.log(status);
-           time.sleep(2);
-           
+           console.log(status);           
           if (status === 'OK') {
             marker = new google.maps.Marker({
               map: map,
@@ -101,7 +100,6 @@
           }
         });
         }
-        console.log(marker);
         var contentString = '<div id="content">'+
             '<div id="siteNotice">'+
             '</div>'+
