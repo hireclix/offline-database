@@ -87,6 +87,9 @@
           var content = address[i];
           geocoder.geocode({'address': address[i]}, function(results, status) {          
           if (status === 'OK') {
+            console.log(i);
+            console.log(address);
+            console.log(address[i]);
             var marker = new google.maps.Marker({
               map: map,
               position: results[0].geometry.location,
