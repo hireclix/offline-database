@@ -83,15 +83,24 @@
         });
         var infowindow = new google.maps.InfoWindow();
         var geocoder = new google.maps.Geocoder(); 
+        var Latlong = [];
+        
+        for (i = 0; i <address.length; i++){
+          geocoder.geocode({'address': address[i]}, function(results, status, j) {          
+          if (status === 'OK') {
+            Latlong.push(results[0].geometry.location)
+          } else {
+            console.log("geocode failed");
+            //alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+        }
+        console.log(Latlong);
+        /*
         for (i = 0; i <address.length; i++){
           var content = address[i];
           geocoder.geocode({'address': address[i]}, function(results, status, j) {          
           if (status === 'OK') {
-            j+=1
-            console.log(j);
-            console.log(address);
-            console.log(address[j]);
-            
             var marker = new google.maps.Marker({
               map: map,
               position: results[0].geometry.location,
@@ -108,7 +117,7 @@
             //alert('Geocode was not successful for the following reason: ' + status);
           }
         });
-        }
+        }*/
       }
       /**
        *  Called when the signed in status changes, to update the UI
