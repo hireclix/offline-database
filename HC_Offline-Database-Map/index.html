@@ -82,10 +82,14 @@
           center: {lat: 39.828, lng: -98.579}
         });
         var infowindow = new google.maps.InfoWindow();
-        var geocoder = new google.maps.Geocoder(); 
+        var geocoder = new google.maps.Geocoder();
+        var i =0;
+        
         for (i = 0; i <address.length; i++){
           var content = address[i];
-          geocoder.geocode({'address': address[i]}, function(results, status, j) {          
+          geocoder.geocode({'address': address[i]}, function(results, status, address[i]) {      
+          console.log(i);
+          console.log(address[i];
           if (status === 'OK') {
             var marker = new google.maps.Marker({
               map: map,
@@ -93,11 +97,14 @@
             });
            google.maps.event.addListener(marker,'click', (function(marker,infowindow){ 
             return function() {
-              infowindow.setContent(results[4].formatted_address);
+              infowindow.setContent(results[0].formatted_address);
               infowindow.open(map,marker);
               };
           })(marker,infowindow));  
           } else {
+            if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
+            i--;
+            }
             console.log("geocode failed");
             //alert('Geocode was not successful for the following reason: ' + status);
           }
