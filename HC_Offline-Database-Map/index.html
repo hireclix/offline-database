@@ -89,8 +89,7 @@
           if (status === 'OK') {
             var marker = new google.maps.Marker({
               map: map,
-              position: results[0].geometry.location,
-              title: results[4].formatted_address
+              position: results[0].geometry.location
             });
            google.maps.event.addListener(marker,'click', (function(marker,infowindow){ 
             return function() {
