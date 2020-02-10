@@ -86,8 +86,8 @@
         var i =0;
         
         for (i = 0; i <address.length; i++){
-          var content = address[i];
-          geocoder.geocode({'address': address[i]}, function(results, status, address) {      
+           var add = address[i];
+          geocoder.geocode({'address': add}, function(results, status) {      
           if (status === 'OK') {
             var marker = new google.maps.Marker({
               map: map,
@@ -95,13 +95,13 @@
             });
            google.maps.event.addListener(marker,'click', (function(marker,infowindow){ 
             return function() {
-              infowindow.setContent(address);
+              infowindow.setContent(add);
               infowindow.open(map,marker);
               };
           })(marker,infowindow));  
           } else {
             if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
-            i--;
+
             }
             console.log("geocode failed");
             //alert('Geocode was not successful for the following reason: ' + status);
