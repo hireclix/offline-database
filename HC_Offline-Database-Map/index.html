@@ -81,13 +81,10 @@
           zoom: 4,
           center: {lat: 39.828, lng: -98.579}
         });
-        
-        var geocoder = new google.maps.Geocoder();
+        var infowindow = new google.maps.InfoWindow();
+        var geocoder = new google.maps.Geocoder(); 
         for (i = 0; i <address.length; i++){
-          var content = "hello";
-          var infowindow = new google.maps.InfoWindow({
-              content: content
-           }); 
+          var content = address[i];
           geocoder.geocode({'address': address[i]}, function(results, status) {          
           if (status === 'OK') {
             var marker = new google.maps.Marker({
@@ -95,11 +92,12 @@
               position: results[0].geometry.location,
               title: address[i]
             });
-            google.maps.event.addListener(marker, "click", (function(marker) {
-              return function(evt) {
-                infowindow.open(map, marker);
-                }
-          })(marker));
+           google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
+            return function() {
+              infowindow.setContent(content);
+              infowindow.open(map,marker);
+              };
+          })(marker,content,infowindow));  
           } else {
             console.log("geocode failed");
             //alert('Geocode was not successful for the following reason: ' + status);
