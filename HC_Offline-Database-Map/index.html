@@ -83,7 +83,7 @@
         });
         var infowindow = new google.maps.InfoWindow();
         var geocoder = new google.maps.Geocoder();
-        var res = "";
+        var res = [];
         for (i = 0; i <address.length; i++){
           geocoder.geocode({'address': address[i]}, function(results, status) {      
           if (status === 'OK') {
