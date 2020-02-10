@@ -85,7 +85,7 @@
         var geocoder = new google.maps.Geocoder(); 
         for (i = 0; i <address.length; i++){
           var content = address[i];
-          geocoder.geocode({'address': address[i]}, function(results, status) {          
+          geocoder.geocode({'address': address[i]}, function(results, status, i) {          
           if (status === 'OK') {
             console.log(i);
             console.log(address);
