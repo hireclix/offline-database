@@ -83,19 +83,18 @@
         });
         var infowindow = new google.maps.InfoWindow();
         var geocoder = new google.maps.Geocoder();
-        var i =0;
-        
+        var res = "";
         for (i = 0; i <address.length; i++){
-           var add = address[i];
-          geocoder.geocode({'address': add}, function(results, status) {      
+          geocoder.geocode({'address': address[i]}, function(results, status) {      
           if (status === 'OK') {
-            var marker = new google.maps.Marker({
+            /*var marker = new google.maps.Marker({
               map: map,
               position: results[0].geometry.location
-            });
+            });*/
+            res.push(results[0].geometry.location);
            google.maps.event.addListener(marker,'click', (function(marker,infowindow){ 
             return function() {
-              infowindow.setContent(add);
+              infowindow.setContent("hello");
               infowindow.open(map,marker);
               };
           })(marker,infowindow));  
@@ -108,6 +107,12 @@
           }
         });
         }
+        console.log(res);
+        console.log(res.geometry.location)
+        var marker = new google.maps.Marker({
+              map: map,
+              position: res[0]
+            });
       }
       /**
        *  Called when the signed in status changes, to update the UI
