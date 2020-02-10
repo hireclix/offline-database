@@ -87,9 +87,7 @@
         
         for (i = 0; i <address.length; i++){
           var content = address[i];
-          geocoder.geocode({'address': address[i]}, function(results, status, address[i]) {      
-          console.log(i);
-          console.log(address[i];
+          geocoder.geocode({'address': address[i]}, function(results, status, address) {      
           if (status === 'OK') {
             var marker = new google.maps.Marker({
               map: map,
@@ -97,7 +95,7 @@
             });
            google.maps.event.addListener(marker,'click', (function(marker,infowindow){ 
             return function() {
-              infowindow.setContent(results[0].formatted_address);
+              infowindow.setContent(address);
               infowindow.open(map,marker);
               };
           })(marker,infowindow));  
