@@ -85,11 +85,13 @@
         var geocoder = new google.maps.Geocoder(); 
         for (i = 0; i <address.length; i++){
           var content = address[i];
-          geocoder.geocode({'address': address[i]}, function(results, status, i) {          
+          geocoder.geocode({'address': address[i]}, function(results, status, j) {          
           if (status === 'OK') {
-            console.log(i);
+            j+=1
+            console.log(j);
             console.log(address);
-            console.log(address[i]);
+            console.log(address[j]);
+            
             var marker = new google.maps.Marker({
               map: map,
               position: results[0].geometry.location,
