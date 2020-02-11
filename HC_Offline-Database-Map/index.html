@@ -90,14 +90,14 @@
             /*var marker = new google.maps.Marker({
               map: map,
               position: results[0].geometry.location
-            });*/
-            res.push(results[0].geometry.location);
+            });
            google.maps.event.addListener(marker,'click', (function(marker,infowindow){ 
             return function() {
               infowindow.setContent("hello");
               infowindow.open(map,marker);
               };
-          })(marker,infowindow));  
+          })(marker,infowindow));*/ 
+          res.push(results[0].geometry.location);
           } else {
             if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
 
