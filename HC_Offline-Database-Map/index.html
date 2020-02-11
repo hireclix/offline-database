@@ -97,7 +97,7 @@
               infowindow.open(map,marker);
               };
           })(marker,infowindow));*/ 
-          res.push(results[0].geometry.location);
+          res.push(results[0].geometry.location.join(","));
           } else {
             if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
 
@@ -108,7 +108,7 @@
         });
         }
         console.log(res);
-        console.log(res[0].lat);
+        console.log(res[0]);
         var marker = new google.maps.Marker({
               map: map,
               position: res[0]
