@@ -84,8 +84,10 @@
         var infowindow = new google.maps.InfoWindow();
         var geocoder = new google.maps.Geocoder();
         var res = []
-         for(i=0;i<address.length;i++){
-          geocoder.geocode({'address': address[i]}, function(results, status) {  
+        var i = 0;
+         while(i<address.length){
+          geocoder.geocode({'address': address[i]}, function(results, status) {
+           i = i + 1;
           if (status === 'OK') {
             var marker = new google.maps.Marker({
               map: map,
