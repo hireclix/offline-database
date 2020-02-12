@@ -89,11 +89,12 @@
           if (status === 'OK') {
             var marker = new google.maps.Marker({
               map: map,
-              position: results[0].geometry.location
+              position: results[0].geometry.location,
+              title: address[j]
             });
            google.maps.event.addListener(marker,'click', (function(marker,infowindow){ 
             return function() {
-              infowindow.setContent("hello" + address[j]);
+              infowindow.setContent(marker.getTitle());
               infowindow.open(map,marker);
               };
           })(marker,infowindow));
