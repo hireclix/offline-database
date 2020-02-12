@@ -102,11 +102,11 @@
               }; 
           })(marker,infowindow));
           } else {
-            if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
+            if (status == 'OVER_QUERY_LIMIT') {
               
             }
             else{
-            console.log("geocode failed");
+            console.log(status);
             //alert('Geocode was not successful for the following reason: ' + status);
             }
           }
