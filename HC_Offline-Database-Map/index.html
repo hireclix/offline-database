@@ -86,7 +86,8 @@
         var res = []
         var i = 0
         while (i < address.length-1){
-          geocoder.geocode({'address': address[i]}, function(results, status) {      
+          geocoder.geocode({'address': address[i]}, function(results, status) {  
+          i = i + 1;
           if (status === 'OK') {
             var marker = new google.maps.Marker({
               map: map,
@@ -100,10 +101,9 @@
               infowindow.open(map,marker);
               }; 
           })(marker,infowindow));
-          i = i + 1;
           } else {
             if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
-             window.setTimeout(console.log("Over_Query_Limit, Waiting"),3000);
+              
             }
             else{
             console.log("geocode failed");
