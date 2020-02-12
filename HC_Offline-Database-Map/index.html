@@ -85,6 +85,7 @@
         var geocoder = new google.maps.Geocoder();
         var res = []
         var i = 0
+        while (i < address.length){
           geocoder.geocode({'address': address[i]}, function(results, status) {      
           if (status === 'OK') {
             var marker = new google.maps.Marker({
@@ -111,6 +112,7 @@
             }
           }
         });
+        }
       }
       /**
        *  Called when the signed in status changes, to update the UI
