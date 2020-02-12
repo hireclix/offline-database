@@ -83,11 +83,14 @@
         });
         var infowindow = new google.maps.InfoWindow();
         var geocoder = new google.maps.Geocoder();
-        var res = [];
+        var j = 0;
         for (i = 0; i <address.length; i++){
           geocoder.geocode({'address': address[i]}, function(results, status) {      
           if (status === 'OK') {
-            /*var marker = new google.maps.Marker({
+            console.log(address[j]);
+            console.log(j);
+            j = j + 1
+            var marker = new google.maps.Marker({
               map: map,
               position: results[0].geometry.location
             });
@@ -96,8 +99,7 @@
               infowindow.setContent("hello");
               infowindow.open(map,marker);
               };
-          })(marker,infowindow));*/ 
-          res.push(results[0].geometry.location);
+          })(marker,infowindow));
           } else {
             if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
 
@@ -107,12 +109,6 @@
           }
         });
         }
-        console.log(res);
-        console.log(res.join(","));
-        var marker = new google.maps.Marker({
-              map: map,
-              position: res[0]
-            });
       }
       /**
        *  Called when the signed in status changes, to update the UI
