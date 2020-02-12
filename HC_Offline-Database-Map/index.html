@@ -84,7 +84,6 @@
         var infowindow = new google.maps.InfoWindow();
         var geocoder = new google.maps.Geocoder();
         var res = []
-        var i = 0;
         for(i=0;i<address.length;i++){
           geocoder.geocode({'address': address[i]}, function(results, status) {
           if (status === 'OK') {
@@ -93,7 +92,6 @@
               position: results[0].geometry.location,
               title: results[0].formatted_address
             });
-            i = i + 1;
             res.push([results[0].geometry.location.lat(),results[0].geometry.location.lng()]);
            google.maps.event.addListener(marker,'click', (function(marker,infowindow){ 
             return function() {
