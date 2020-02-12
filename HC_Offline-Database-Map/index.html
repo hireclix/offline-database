@@ -91,7 +91,7 @@
               map: map,
               position: results[0].geometry.location
             });
-            res.push([results[0].geometry.location.lat(),results[0].geometry.location.lng()].join(","));
+            res.push(results[0].geometry.location.lat(),results[0].geometry.location.lng());
            google.maps.event.addListener(marker,'click', (function(marker,infowindow){ 
             return function() {
               infowindow.setContent("hello");
