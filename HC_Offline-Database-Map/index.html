@@ -105,8 +105,10 @@
              window.setTimeout(console.log("Over_Query_Limit, Waiting"),3000);
              i = i - 1;
             }
+            else{
             console.log("geocode failed");
             //alert('Geocode was not successful for the following reason: ' + status);
+            }
           }
         });
       }
