@@ -87,19 +87,17 @@
         for (i = 0; i <address.length; i++){
           geocoder.geocode({'address': address[i]}, function(results, status) {      
           if (status === 'OK') {
-            console.log(address[j]);
-            console.log(j);
-            j = j + 1
             var marker = new google.maps.Marker({
               map: map,
               position: results[0].geometry.location
             });
            google.maps.event.addListener(marker,'click', (function(marker,infowindow){ 
             return function() {
-              infowindow.setContent("hello");
+              infowindow.setContent("hello" + address[j]);
               infowindow.open(map,marker);
               };
           })(marker,infowindow));
+          j = j + 1;
           } else {
             if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
 
