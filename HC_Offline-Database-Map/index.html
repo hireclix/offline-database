@@ -85,8 +85,7 @@
         var geocoder = new google.maps.Geocoder();
         var res = []
         var i = 0;
-        while(i<15){
-        window.setTimeout(function(){
+        for(i=0;i<address.length;i++){
           geocoder.geocode({'address': address[i]}, function(results, status) {
           if (status === 'OK') {
             var marker = new google.maps.Marker({
@@ -112,7 +111,6 @@
             }
           }
         });
-        }, 1000*i);
         }
       }
       /**
